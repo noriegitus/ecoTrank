@@ -10,7 +10,8 @@ package ecotrack.logica;
 
 import java.time.LocalDate;
 
-public class Residuo {
+public class Residuo implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String id; 
     private String nombre;
     private String tipo;
