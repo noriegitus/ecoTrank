@@ -1,33 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ecotrack.estructuras;
 
-/**
- *
- * @author Acosta Allan
- */
-
-import java.util.Iterator;
+import java.io.Serializable;
+import java.util.Comparator;
 import java.util.NoSuchElementException;
 import ecotrack.logica.Residuo;
 
-public class DoublyLinkedCircularList<E> implements List<E> {
+public class DoublyLinkedCircularList<E> implements List<E>, Serializable {
+    private static final long serialVersionUID = 1L;
 
-    // Clase interna Nodo (Bidireccional)
-    private class Node<E> {
+    private class Node implements Serializable {
+        private static final long serialVersionUID = 1L; // Buena práctica para nodos serializables
         E content;
-        Node<E> next;
-        Node<E> prev;
+        Node next;
+        Node prev;
 
         public Node(E content) {
             this.content = content;
         }
     }
 
-    private Node<E> head;
-    private Node<E> tail;
+    private Node head;
+    private Node tail;
     private int size;
 
     public DoublyLinkedCircularList() {
@@ -36,21 +29,70 @@ public class DoublyLinkedCircularList<E> implements List<E> {
         this.size = 0;
     }
 
-    // MÉTODOS BASE DE LA INTERFAZ LIST<E>
+    // --- ITERADOR ---
+    private class IteradorCircular implements Iterator<E> {
+        private Node actual;
+        private int contador; 
+
+        public IteradorCircular() {
+            this.actual = head;
+            this.contador = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !isEmpty() && contador < size;
+        }
+
+        @Override
+        public E next() {
+            if (isEmpty()) throw new NoSuchElementException("La lista está vacía");
+            E data = actual.content;
+            actual = actual.next;
+            contador++;
+            return data;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return !isEmpty();
+        }
+
+        @Override
+        public E previous() {
+            if (isEmpty()) throw new NoSuchElementException("La lista está vacía");
+            actual = actual.prev; 
+            if (contador > 0) contador--; 
+            return actual.content;
+        }
+
+        @Override
+        public E peek() {
+             if (isEmpty()) return null;
+             return actual.content;
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new IteradorCircular();
+    }
+
+    // --- MÉTODOS BASE ---
 
     @Override
     public boolean addFirst(E e) {
         if (e == null) return false;
-        Node<E> newNode = new Node<>(e);
+        Node newNode = new Node(e);
         if (isEmpty()) {
             head = tail = newNode;
             head.next = head;
-            head.prev = head; // Cierre circular inicial
+            head.prev = head;
         } else {
             newNode.next = head;
             newNode.prev = tail;
             head.prev = newNode;
-            tail.next = newNode; // Mantener circularidad
+            tail.next = newNode;
             head = newNode;
         }
         size++;
@@ -60,7 +102,7 @@ public class DoublyLinkedCircularList<E> implements List<E> {
     @Override
     public boolean addLast(E e) {
         if (e == null) return false;
-        Node<E> newNode = new Node<>(e);
+        Node newNode = new Node(e);
         if (isEmpty()) {
             head = tail = newNode;
             head.next = head;
@@ -69,7 +111,7 @@ public class DoublyLinkedCircularList<E> implements List<E> {
             newNode.next = head;
             newNode.prev = tail;
             tail.next = newNode;
-            head.prev = newNode; // Mantener circularidad
+            head.prev = newNode;
             tail = newNode;
         }
         size++;
@@ -80,7 +122,6 @@ public class DoublyLinkedCircularList<E> implements List<E> {
     public E removeFirst() {
         if (isEmpty()) return null;
         E data = head.content;
-        
         if (size == 1) {
             head = tail = null;
         } else {
@@ -96,7 +137,6 @@ public class DoublyLinkedCircularList<E> implements List<E> {
     public E removeLast() {
         if (isEmpty()) return null;
         E data = tail.content;
-        
         if (size == 1) {
             head = tail = null;
         } else {
@@ -109,14 +149,10 @@ public class DoublyLinkedCircularList<E> implements List<E> {
     }
 
     @Override
-    public int size() {
-        return size;
-    }
+    public int size() { return size; }
 
     @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
+    public boolean isEmpty() { return size == 0; }
 
     @Override
     public void clear() {
@@ -124,21 +160,23 @@ public class DoublyLinkedCircularList<E> implements List<E> {
         size = 0;
     }
 
-    // Métodos por índice
     @Override
     public boolean add(int index, E element) { 
-        throw new UnsupportedOperationException("Usa addFirst o addLast para la entrega actual."); 
+        throw new UnsupportedOperationException("Usa addFirst o addLast para eficiencia"); 
     }
     
     @Override
     public E remove(int index) { 
-        throw new UnsupportedOperationException("Usa removeFirst o removeLast para la entrega actual."); 
+        throw new UnsupportedOperationException("Usa removeFirst o removeLast para eficiencia"); 
     }
 
     @Override
     public E get(int index) {
         if (index < 0 || index >= size) return null;
-        Node<E> actual = head;
+        // Optimización pequeña: si es index 0, retornamos head directo
+        if (index == 0) return head.content;
+        
+        Node actual = head;
         for (int i = 0; i < index; i++) {
             actual = actual.next;
         }
@@ -148,7 +186,7 @@ public class DoublyLinkedCircularList<E> implements List<E> {
     @Override
     public E set(int index, E element) {
         if (index < 0 || index >= size) return null;
-        Node<E> actual = head;
+        Node actual = head;
         for (int i = 0; i < index; i++) {
             actual = actual.next;
         }
@@ -157,7 +195,7 @@ public class DoublyLinkedCircularList<E> implements List<E> {
         return oldVal;
     }
 
-    // MÉTODOS PERSONALIZADOS
+    // --- MÉTODOS ESPECÍFICOS DEL PROYECTO (Residuos) ---
 
     @Override
     public boolean agregarResiduo(E r) {
@@ -166,12 +204,13 @@ public class DoublyLinkedCircularList<E> implements List<E> {
 
     @Override
     public E buscarResiduo(String id) {
-        if (isEmpty()) return null;
+        if (isEmpty() || id == null) return null;
+        Node actual = head;
         
-        Node<E> actual = head;
+        // Recorremos hasta dar la vuelta
         do {
-            // Verificamos si el contenido es un Residuo para acceder a getId()
-            if (actual.content instanceof Residuo) {
+            // Verificamos instanceof para seguridad de tipos
+            if (actual.content != null && actual.content instanceof Residuo) {
                 Residuo r = (Residuo) actual.content;
                 if (r.getId().equals(id)) {
                     return actual.content;
@@ -186,24 +225,17 @@ public class DoublyLinkedCircularList<E> implements List<E> {
     @Override
     public boolean eliminarResiduo(E r) {
         if (isEmpty() || r == null) return false;
-        
-        Node<E> actual = head;
+        Node actual = head;
         do {
             if (actual.content.equals(r)) {
-                // Caso único nodo
                 if (size == 1) {
                     head = tail = null;
                     size = 0;
                     return true;
                 }
-                
-                // Ajuste de punteros para eliminar nodo
-                if (actual == head) {
-                    return removeFirst() != null;
-                } else if (actual == tail) {
-                    return removeLast() != null;
-                } else {
-                    // Nodo intermedio
+                if (actual == head) return removeFirst() != null;
+                else if (actual == tail) return removeLast() != null;
+                else {
                     actual.prev.next = actual.next;
                     actual.next.prev = actual.prev;
                     size--;
@@ -212,55 +244,28 @@ public class DoublyLinkedCircularList<E> implements List<E> {
             }
             actual = actual.next;
         } while (actual != head);
-        
         return false;
     }
-
-    // ITERADOR PERSONALIZADO
-
-    // Clase interna para el iterador solicitado
-    public class IteradorResiduos implements Iterator<E> {
-        private Node<E> actual;
-        private boolean start; // Bandera para manejar la primera vuelta en bucles
-
-        public IteradorResiduos() {
-            this.actual = head;
-            this.start = true;
-        }
-
-        @Override
-        public boolean hasNext() {
-            // En lista circular no vacía, siempre hay siguiente
-            return !isEmpty();
-        }
-
-        @Override
-        public E next() {
-            if (isEmpty()) throw new NoSuchElementException("La lista está vacía");
-            E data = actual.content;
-            actual = actual.next;
-            start = false;
-            return data;
-        }
-
-        public boolean hasPrevious() {
-            return !isEmpty();
-        }
-
-        public E previous() {
-            if (isEmpty()) throw new NoSuchElementException("La lista está vacía");
-            actual = actual.prev;
-            return actual.content;
-        }
-        
-        public E peek() {
-             if (isEmpty()) return null;
-             return actual.content;
-        }
-    }
     
-    @Override
-    public Iterator<E> iterator() {
-        return new IteradorResiduos();
+    // --- ORDENAMIENTO (Bubble Sort) ---
+    public void sort(Comparator<E> c) {
+        if (size < 2) return;
+        boolean cambiado;
+        do {
+            cambiado = false;
+            Node actual = head;
+            // Iteramos size - 1 veces
+            for (int i = 0; i < size - 1; i++) {
+                Node siguiente = actual.next;
+                if (c.compare(actual.content, siguiente.content) > 0) {
+                    // Swap de contenido (más seguro que cambiar punteros en circular)
+                    E temp = actual.content;
+                    actual.content = siguiente.content;
+                    siguiente.content = temp;
+                    cambiado = true;
+                }
+                actual = actual.next;
+            }
+        } while (cambiado);
     }
 }

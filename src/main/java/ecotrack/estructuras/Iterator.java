@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ecotrack.estructuras;
 
-/**
- *
- * @author PC
- */
-public class Iterator {
-    
+public interface Iterator<E> extends java.util.Iterator<E> {
+    public boolean hasPrevious();
+    public E previous();
+    public E peek();
 }
+ 

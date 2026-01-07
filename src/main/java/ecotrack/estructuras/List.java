@@ -1,14 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package ecotrack.estructuras;
-
-
-/**
- *
- * @author Acosta Allan
- */
 
 public interface List<E> extends Iterable<E> {
     
@@ -31,4 +21,7 @@ public interface List<E> extends Iterable<E> {
     boolean agregarResiduo(E r);
     E buscarResiduo (String id);
     boolean eliminarResiduo (E r);
+
+    @Override
+    Iterator<E> iterator();
 }

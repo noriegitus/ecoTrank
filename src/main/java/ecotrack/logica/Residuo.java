@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ecotrack.logica;
 
- 
- // @author Acosta Allan
- 
-
+import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Residuo implements Serializable {
@@ -64,6 +57,7 @@ public class Residuo implements Serializable {
     public String getTipo() { return tipo; }
     public double getPeso() { return peso; }
     public int getPrioridad() { return prioridad; }
+    public String getZona() {return zona;}
 
     @Override
     public String toString() {
