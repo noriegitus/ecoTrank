@@ -1,17 +1,14 @@
 package ecotrack.main;
 
-import ecotrack.services.SistemaEcoTrack; // Importamos el cerebro del sistema
-import ecotrack.logica.Residuo;           // Importamos el modelo
+import ecotrack.services.SistemaEcoTrack; 
+import ecotrack.logica.Residuo;           
 import java.io.IOException;
 import javafx.fxml.FXML;
 
 public class PrimaryController {
 
-    // 1. Declaramos la instancia del sistema
     private SistemaEcoTrack sistema;
 
-    // 2. Este método 'initialize' es especial de JavaFX. 
-    // Se ejecuta AUTOMÁTICAMENTE justo después de cargar la vista.
     @FXML
     public void initialize() {
         System.out.println("Inicializando vista primaria...");
@@ -19,7 +16,7 @@ public class PrimaryController {
         // Cargamos los datos guardados anteriormente
         sistema = SistemaEcoTrack.cargarDatos();
         
-        // (Opcional) Imprimimos en consola para verificar que cargó
+        // para verificar que cargó
         if (sistema.getEstadisticas().obtenerDatos().isEmpty()) {
             System.out.println("Sistema iniciado sin datos previos.");
         } else {
@@ -32,18 +29,17 @@ public class PrimaryController {
 
     @FXML
     private void switchToSecondary() throws IOException {
-        // 3. Guardamos los datos antes de cambiar de ventana para no perder nada
+        // Guardar los datos antes de cambiar de ventana para no perder nada
         System.out.println("Guardando datos antes de cambiar de ventana...");
         sistema.guardarDatos();
         
         App.setRoot("secondary");
     }
 
-    // 4. Agrega este método nuevo para probar que tu lógica funciona.
+    // para probar que tu lógica funciona.
     // (Para usarlo, deberías crear un botón en tu 'primary.fxml' que diga onAction="#probarLogica")
     @FXML
     private void probarLogica() {
-        // CORRECCIÓN: Se agregó "Zona Norte" como 5to parámetro para coincidir con tu constructor
         Residuo r = new Residuo("TEST-01", "Botella Fanta", "Plastico", 0.5, "Zona Norte", 1);
         
         sistema.agregarResiduo(r);

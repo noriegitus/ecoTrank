@@ -2,14 +2,12 @@ package ecotrack.services;
 
 import ecotrack.logica.Residuo;
 import java.util.HashMap;
-// import java.util.Map; // <-- BORRAR ESTO
 
 import java.io.Serializable;
 
 public class ModuloEstadisticas implements Serializable {
     private static final long serialVersionUID = 1L;
     
-    // Declaración concreta
     private HashMap<String, Double> estadisticasPeso;
 
     public ModuloEstadisticas() {
@@ -21,7 +19,6 @@ public class ModuloEstadisticas implements Serializable {
         estadisticasPeso.put(r.getTipo(), pesoActual + r.getPeso());
     }
     
-    // CAMBIO: Retornar HashMap en lugar de Map
     public HashMap<String, Double> obtenerDatos() {
         return estadisticasPeso;
     }

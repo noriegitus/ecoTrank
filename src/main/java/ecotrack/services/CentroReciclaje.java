@@ -7,8 +7,7 @@ import java.io.Serializable;
 public class CentroReciclaje implements Serializable {
     private static final long serialVersionUID = 1L;
     
-    // CORRECCIÓN: Usamos TU propia estructura de datos (Pila basada en Lista Enlazada)
-    // en lugar de usar ArrayDeque de Java, para cumplir estrictamente el PDF.
+    // Pila basada en Lista Enlazada
     private DoublyLinkedCircularList<Residuo> pilaReciclaje;
 
     public CentroReciclaje() {
@@ -26,11 +25,10 @@ public class CentroReciclaje implements Serializable {
     }
     
     public Residuo verSiguiente() {
-        // Peek: ver el primero sin sacarlo
         return pilaReciclaje.get(0);
     }
     
-    // Método auxiliar para saber cuántos hay (opcional para GUI)
+    // Método auxiliar para saber cuántos hay
     public int cantidadPendiente() {
         return pilaReciclaje.size();
     }

@@ -32,23 +32,21 @@ public class SistemaEcoTrack implements Serializable {
     public void agregarZona(Zona z) {
         if (z == null) return;
         
-        // 1. Agregar a la cola de prioridad 
         colaZonas.agregarZona(z);
         
-        // 2. Agregar al mapa auxiliar
         mapaZonas.put(z.getNombreZona(), z);
     }
 
     public void agregarResiduo(Residuo r) {
         if (r == null) return;
 
-        // A. Agregar a la lista circular (la calle)
+        // Agregar a la lista circular (la calle)
         listaResiduos.agregarResiduo(r);
         
-        // B. Registrar estadísticas
+        // Registrar estadísticas
         estadisticas.registrarEstadistica(r);
         
-        // C. Buscar la zona rápidamente usando HashMap
+        // Buscar la zona rápidamente usando HashMap
         Zona zonaCorrespondiente = mapaZonas.get(r.getZona());
         
         if (zonaCorrespondiente != null) {
@@ -68,15 +66,14 @@ public class SistemaEcoTrack implements Serializable {
 
         ArrayList<Residuo> residuosEncontrados = new ArrayList<>();
 
-        // Paso A: Buscar en la lista circular los residuos de esa zona
-        // Usamos el for-each que funciona gracias a tu IteradorCircular
+        // Buscar en la lista circular los residuos de esa zona
         for (Residuo r : listaResiduos) {
             if (r.getZona() != null && r.getZona().equalsIgnoreCase(z.getNombreZona())) {
                 residuosEncontrados.add(r);
             }
         }
 
-        // Paso B: Retirar de la calle y llevar al centro
+        // Retirar de la calle y llevar al centro
         for (Residuo r : residuosEncontrados) {
             if (listaResiduos.eliminarResiduo(r)) {
                 centroReciclaje.recibirResiduo(r);
@@ -84,7 +81,7 @@ public class SistemaEcoTrack implements Serializable {
             }
         }
         
-        // Paso C: Actualizar prioridad tras la recolección (ahora la zona está "más limpia")
+        // Actualizar prioridad tras la recolección (ahora la zona está "más limpia")
         colaZonas.actualizarPrioridadZona(z);
     }
     

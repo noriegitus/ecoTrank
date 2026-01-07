@@ -5,15 +5,10 @@ import java.util.PriorityQueue;
 import ecotrack.logica.Zona;
 
 public class ColaZona implements Serializable {
-    private static final long serialVersionUID = 1L; // Buena práctica agregarlo
+    private static final long serialVersionUID = 1L;
     private PriorityQueue<Zona> coladePrioridad;
 
     public ColaZona(){
-        // ANTES (Causaba el error):
-        // coladePrioridad = new PriorityQueue<>((z1, z2) -> Double.compare(...));
-        
-        // AHORA (Solución):
-        // Usamos la clase que acabamos de crear, que SÍ es serializable
         coladePrioridad = new PriorityQueue<>(new ComparadorZona());
     }
 

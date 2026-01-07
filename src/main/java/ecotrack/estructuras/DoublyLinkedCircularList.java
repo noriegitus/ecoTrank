@@ -173,7 +173,6 @@ public class DoublyLinkedCircularList<E> implements List<E>, Serializable {
     @Override
     public E get(int index) {
         if (index < 0 || index >= size) return null;
-        // Optimización pequeña: si es index 0, retornamos head directo
         if (index == 0) return head.content;
         
         Node actual = head;
