@@ -32,4 +32,8 @@ public class CentroReciclaje implements Serializable {
     public int cantidadPendiente() {
         return pilaReciclaje.size();
     }
+    
+    public boolean estaVacio() {
+        return pilaReciclaje.isEmpty();
+    }
 }

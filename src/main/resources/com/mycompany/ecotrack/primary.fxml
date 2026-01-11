@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.ecotrack.PrimaryController">
-   <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+<BorderPane xmlns="http://javafx.com/javafx/13"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ecotrack.main.PrimaryController"
+            stylesheets="@styles.css">
+
+    <!-- HEADER -->
+    <top>
+        <VBox alignment="CENTER" spacing="5" styleClass="header">
+            <Label text="EcoTrack" styleClass="title"/>
+            <Label text="Sistema de Gestión de Residuos" styleClass="subtitle"/>
+        </VBox>
+    </top>
+
+    <!-- CENTER -->
+    <center>
+        <VBox alignment="CENTER" spacing="15">
+            <Button text="♻ Ver Residuos" onAction="#irVerResiduos" styleClass="menu-button"/>
+            <Button text="🏭 Centro de Reciclaje" onAction="#irCentroReciclaje" styleClass="menu-button"/>
+            <Button text="📍 Gestión de Zonas" onAction="#irZonas" styleClass="menu-button"/>
+            <Button text="📊 Estadísticas" onAction="#irEstadisticas" styleClass="menu-button"/>
+        </VBox>
+    </center>
+
+</BorderPane>

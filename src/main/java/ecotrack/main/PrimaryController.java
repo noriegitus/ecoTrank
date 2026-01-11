@@ -1,50 +1,62 @@
 package ecotrack.main;
 
-import ecotrack.services.SistemaEcoTrack; 
-import ecotrack.logica.Residuo;           
-import java.io.IOException;
+import ecotrack.services.SistemaEcoTrack;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class PrimaryController {
 
     private SistemaEcoTrack sistema;
 
+    public void setSistema(SistemaEcoTrack sistema) {
+        this.sistema = sistema;
+    }
+
     @FXML
-    public void initialize() {
-        System.out.println("Inicializando vista primaria...");
-        
-        // Cargamos los datos guardados anteriormente
-        sistema = SistemaEcoTrack.cargarDatos();
-        
-        // para verificar que cargó
-        if (sistema.getEstadisticas().obtenerDatos().isEmpty()) {
-            System.out.println("Sistema iniciado sin datos previos.");
-        } else {
-            System.out.println("Datos cargados exitosamente.");
-            sistema.getEstadisticas().obtenerDatos().forEach((tipo, peso) -> 
-                System.out.println("-> " + tipo + ": " + peso + "kg")
+    private void irVerResiduos() {
+        abrirVentana("verResiduos.fxml", "Ver Residuos");
+    }
+
+    @FXML
+    private void irCentroReciclaje() {
+        abrirVentana("centroReciclaje.fxml", "Centro de Reciclaje");
+    }
+    
+    @FXML
+    private void irZonas() {
+        abrirVentana("zonas.fxml", "Gestión de Zonas");
+    }
+
+    @FXML
+    private void irEstadisticas() {
+        abrirVentana("estadistica.fxml", "Estadísticas");
+    }
+
+    // MÉTODO AUXILIAR (reutilizable)
+    private void abrirVentana(String fxml, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/mycompany/ecotrack/" + fxml)
             );
+            Parent root = loader.load();
+
+            Object controller = loader.getController();
+            if (controller instanceof SistemaInyectable) {
+                ((SistemaInyectable) controller).setSistema(sistema);
+            }
+
+            Stage stage = new Stage();
+            stage.setTitle(titulo);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+    
 
-    @FXML
-    private void switchToSecondary() throws IOException {
-        // Guardar los datos antes de cambiar de ventana para no perder nada
-        System.out.println("Guardando datos antes de cambiar de ventana...");
-        sistema.guardarDatos();
-        
-        App.setRoot("secondary");
-    }
-
-    // para probar que tu lógica funciona.
-    // (Para usarlo, deberías crear un botón en tu 'primary.fxml' que diga onAction="#probarLogica")
-    @FXML
-    private void probarLogica() {
-        Residuo r = new Residuo("TEST-01", "Botella Fanta", "Plastico", 0.5, "Zona Norte", 1);
-        
-        sistema.agregarResiduo(r);
-        
-        System.out.println("¡Prueba exitosa! Residuo agregado.");
-        sistema.guardarDatos();
-    }
 }

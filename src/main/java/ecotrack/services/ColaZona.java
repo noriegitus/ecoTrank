@@ -3,6 +3,8 @@ package ecotrack.services;
 import java.io.Serializable;
 import java.util.PriorityQueue;
 import ecotrack.logica.Zona;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ColaZona implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -24,5 +26,19 @@ public class ColaZona implements Serializable {
         if(coladePrioridad.remove(z)){
             coladePrioridad.add(z);
         }
+    }
+    
+    public boolean eliminarZona(Zona z) {
+        return coladePrioridad.remove(z);
+    }
+    
+    public Zona peek() {
+        return coladePrioridad.peek();
+    }
+    
+    
+    //Para la GUI
+    public List<Zona> getZonas() {
+        return new ArrayList<>(coladePrioridad);
     }
 }

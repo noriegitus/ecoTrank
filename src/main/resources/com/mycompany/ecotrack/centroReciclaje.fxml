@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/13"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ecotrack.main.CentroReciclajeController">
+
+    <!-- HEADER -->
+    <top>
+        <Label text="Centro de Reciclaje"
+               BorderPane.alignment="CENTER"
+               style="-fx-font-size: 22px; -fx-padding: 15;" />
+    </top>
+
+    <!-- CONTENIDO -->
+    <center>
+        <VBox spacing="15" alignment="CENTER">
+
+            <Label fx:id="lblCantidad"
+                   text="Residuos pendientes: 0"
+                   style="-fx-font-size: 16px;" />
+
+            <TitledPane text="Residuo en proceso" expanded="true">
+                <VBox spacing="8" alignment="CENTER">
+                    <Label fx:id="lblNombre" text="Nombre: -" />
+                    <Label fx:id="lblTipo" text="Tipo: -" />
+                    <Label fx:id="lblPeso" text="Peso: -" />
+                    <Label fx:id="lblZona" text="Zona: -" />
+                </VBox>
+            </TitledPane>
+
+            <Button text="Procesar Residuo"
+                    onAction="#procesarResiduo"
+                    style="-fx-font-size: 14px; -fx-padding: 10 20;" />
+
+        </VBox>
+    </center>
+
+</BorderPane>

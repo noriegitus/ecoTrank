@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecotrack.main.VerResiduosController">
+    <children>
+        <Label text="Gestión de Residuos Urbanos" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+        
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <children>
+                <Label text="Ordenar por:" />
+                <ComboBox fx:id="comboOrdenamiento" prefWidth="150.0" onAction="#ordenarTabla" />
+            </children>
+        </HBox>
+        
+        <TableView fx:id="tablaResiduos" prefHeight="300.0" prefWidth="600.0">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="80" />
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="120" />
+                <TableColumn fx:id="colTipo" text="Tipo" prefWidth="100" />
+                <TableColumn fx:id="colZona" text="Zona" prefWidth="120" />
+                <TableColumn fx:id="colPeso" text="Peso (kg)" prefWidth="100" />
+                <TableColumn fx:id="colPrioridad" text="Prioridad" prefWidth="80" />
+            </columns>
+        </TableView>
+
+        <HBox spacing="10.0" alignment="CENTER" style="-fx-background-color: #f4f4f4; -fx-padding: 10;">
+            <children>
+                <Button text="← Anterior" onAction="#irAnterior" />
+                <Label fx:id="lblDetalle" text="Seleccione un residuo para empezar..." wrapText="true" prefWidth="300.0" alignment="CENTER" />
+                <Button text="Siguiente →" onAction="#irSiguiente" />
+            </children>
+        </HBox>
+
+        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+            <children>
+                <Button text="➕ Agregar Residuo" onAction="#agregarResiduo" style="-fx-background-color: #4caf50; -fx-text-fill: white;" />
+                <Button text="Eliminar Seleccionado" onAction="#eliminarResiduo" style="-fx-background-color: #ff4444; -fx-text-fill: white;" />
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</VBox>

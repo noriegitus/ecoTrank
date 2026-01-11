@@ -1,12 +1,16 @@
 package ecotrack.main;
 
-import java.io.IOException;
+import ecotrack.logica.Residuo;
+import ecotrack.services.SistemaEcoTrack;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 
-public class SecondaryController {
+public class SecondaryController implements SistemaInyectable {
+    private SistemaEcoTrack sistema;
 
-    @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
+    @Override
+    public void setSistema(SistemaEcoTrack sistema) {
+        this.sistema = sistema;
     }
 }
+

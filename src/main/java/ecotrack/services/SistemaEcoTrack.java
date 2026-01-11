@@ -106,4 +106,13 @@ public class SistemaEcoTrack implements Serializable {
         }
         return new SistemaEcoTrack(); 
     }
+    
+    public ArrayList<Residuo> obtenerResiduosComoLista() {
+        ArrayList<Residuo> lista = new ArrayList<>();
+        for (Residuo r : listaResiduos) {
+            lista.add(r);
+        }
+        return lista;
+    }
+
 }

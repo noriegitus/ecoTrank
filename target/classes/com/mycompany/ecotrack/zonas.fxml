@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ecotrack.main.ZonasController"
+      spacing="12"
+      style="-fx-padding:20;">
+
+    <Label text="Gestión de Zonas"
+           style="-fx-font-size:18px; -fx-font-weight:bold;" />
+
+    <Label fx:id="lblZonaPrioritaria"
+           text="Zona prioritaria: -"
+           style="-fx-font-size:14px;" />
+
+    <TableView fx:id="tablaZonas">
+
+        <columns>
+            <TableColumn fx:id="colNombre" text="Zona" prefWidth="140"/>
+            <TableColumn fx:id="colPendiente" text="Kg Pendientes" prefWidth="120"/>
+            <TableColumn fx:id="colRecolectado" text="Kg Recolectados" prefWidth="140"/>
+            <TableColumn fx:id="colUtilidad" text="Utilidad" prefWidth="100"/>
+        </columns>
+
+    </TableView>
+
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button text="Agregar Zona"
+                onAction="#agregarZona"
+                style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-pref-width: 150;"/>
+        <Button text="Eliminar Zona"
+                onAction="#eliminarZona"
+                style="-fx-background-color: #ff4444; -fx-text-fill: white; -fx-pref-width: 150;"/>
+    </HBox>
+    
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button text="🚚 Recolectar Zona Prioritaria"
+                onAction="#recolectarZona"
+                style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-pref-width: 200;"/>
+        <Button text="📍 Recolectar Zona Seleccionada"
+                onAction="#recolectarZonaSeleccionada"
+                style="-fx-background-color: #ff9800; -fx-text-fill: white; -fx-pref-width: 220;"/>
+    </HBox>
+
+</VBox>
+

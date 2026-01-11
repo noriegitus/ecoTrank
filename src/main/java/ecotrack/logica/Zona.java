@@ -20,6 +20,11 @@ public class Zona implements Serializable {
     public int getP_Recolectado() {
         return p_Recolectado;
     }
+    
+    // Getters para JavaFX PropertyValueFactory
+    public int getPesoRecolectado() {
+        return p_Recolectado;
+    }
 
     public void registrarResiduoPendiente(int peso){
         p_Pendiente += peso;
@@ -27,6 +32,16 @@ public class Zona implements Serializable {
 
     public int getP_Pendiente() {
         return p_Pendiente;
+    }
+    
+    // Getter para JavaFX PropertyValueFactory
+    public int getPesoPendiente() {
+        return p_Pendiente;
+    }
+    
+    // Getter para utilidad (para mostrar en tabla)
+    public int getUtilidad() {
+        return calcularUtilidad();
     }
 
     public void regitrarResiduoRecolectado(int peso){
