@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/13"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ecotrack.main.PrimaryController"
+            stylesheets="@styles.css">
+
+    <!-- HEADER -->
+    <top>
+        <VBox alignment="CENTER" spacing="5" styleClass="header">
+            <Label text="EcoTrack" styleClass="title"/>
+            <Label text="Sistema de Gestión de Residuos" styleClass="subtitle"/>
+        </VBox>
+    </top>
+
+    <!-- CENTER -->
+    <center>
+        <VBox alignment="CENTER" spacing="15">
+            <Button text="♻ Ver Residuos" onAction="#irVerResiduos" styleClass="menu-button"/>
+            <Button text="🏭 Centro de Reciclaje" onAction="#irCentroReciclaje" styleClass="menu-button"/>
+            <Button text="📍 Gestión de Zonas" onAction="#irZonas" styleClass="menu-button"/>
+            <Button text="📊 Estadísticas" onAction="#irEstadisticas" styleClass="menu-button"/>
+        </VBox>
+    </center>
+
+</BorderPane>
