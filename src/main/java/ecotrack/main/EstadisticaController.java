@@ -43,9 +43,6 @@ public class EstadisticaController implements SistemaInyectable {
     @FXML
     private void initialize() {
         System.out.println("EstadisticaController: initialize() llamado");
-        // Solo configurar las columnas aquí, los datos se cargarán en setSistema()
-        // No configuramos nada aquí porque sistema aún es null
-        // Todo se configurará cuando se llame setSistema()
     }
 
     @Override
@@ -66,7 +63,6 @@ public class EstadisticaController implements SistemaInyectable {
             return;
         }
         
-        // Usar callbacks directos para mayor compatibilidad con módulos
         colTipo.setCellValueFactory(cellData -> {
             FilaEstadistica f = cellData.getValue();
             return f != null ? new SimpleStringProperty(f.getTipo()) : new SimpleStringProperty("");
@@ -80,24 +76,24 @@ public class EstadisticaController implements SistemaInyectable {
 
     private void cargarDatos() {
         if (tablaEstadisticas == null) {
-            System.err.println("Error: tablaEstadisticas es null");
+            System.err.println("Error: tablaEstadisticas  no existe");
             return;
         }
         if (sistema == null) {
-            System.err.println("Error: sistema es null");
+            System.err.println("Error: sistema es vacio");
             tablaEstadisticas.setItems(FXCollections.observableArrayList());
             return;
         }
         
         if (sistema.getEstadisticas() == null) {
-            System.err.println("Error: módulo de estadísticas es null");
+            System.err.println("Error: módulo de estadísticas es vacio");
             tablaEstadisticas.setItems(FXCollections.observableArrayList());
             return;
         }
 
         var datos = sistema.getEstadisticas().obtenerDatos();
         if (datos == null) {
-            System.err.println("Error: datos de estadísticas es null");
+            System.err.println("Error: datos de estadísticas esta vacío");
             tablaEstadisticas.setItems(FXCollections.observableArrayList());
             return;
         }

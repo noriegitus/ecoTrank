@@ -31,13 +31,13 @@ public class SistemaEcoTrack implements Serializable {
 
     public void agregarZona(Zona z) {
         if (z == null) {
-            System.err.println("Error: No se puede agregar una zona null");
+            System.err.println("La zona tiene que existir");
             return;
         }
         
         String nombreZona = z.getNombreZona();
         if (nombreZona == null || nombreZona.trim().isEmpty()) {
-            System.err.println("Error: La zona debe tener un nombre válido");
+            System.err.println("La zona tiene que tener un nombre válido");
             return;
         }
         
@@ -51,7 +51,7 @@ public class SistemaEcoTrack implements Serializable {
 
         // Validar que la zona no sea null antes de buscar
         String zonaResiduo = r.getZona();
-        if (zonaResiduo == null || zonaResiduo.trim().isEmpty()) {
+        if (zonaResiduo == null) {
             System.err.println("Error: El residuo no tiene una zona válida asignada");
             return;
         }
@@ -59,24 +59,19 @@ public class SistemaEcoTrack implements Serializable {
         // Validar que el peso sea válido antes de procesar
         double peso = r.getPeso();
         if (peso < 0) {
-            System.err.println("Error: El peso del residuo no puede ser negativo. Valor: " + peso);
+            System.err.println("El peso no puede ser negativo: " + peso);
             return;
         }
 
-        // Agregar a la lista circular (la calle)
         listaResiduos.agregarResiduo(r);
         
         // Registrar estadísticas
         estadisticas.registrarEstadistica(r);
-        
-        // Buscar la zona rápidamente usando HashMap
         Zona zonaCorrespondiente = mapaZonas.get(zonaResiduo);
         
         if (zonaCorrespondiente != null) {
-            // Actualizamos el peso pendiente en la zona
             zonaCorrespondiente.registrarResiduoPendiente((int) peso);
             
-            // Reordenamos la cola de prioridad
             colaZonas.actualizarPrioridadZona(zonaCorrespondiente);
         } else {
             // Manejo de error si la zona no existe
@@ -86,7 +81,7 @@ public class SistemaEcoTrack implements Serializable {
     
     public void recolectarResiduosDeZona(Zona z) {
         if (z == null) {
-            System.err.println("Error: No se puede recolectar residuos de una zona null");
+            System.err.println("Los residuos no pueden recogerse en una zona que no exista");
             return;
         }
 
@@ -123,11 +118,21 @@ public class SistemaEcoTrack implements Serializable {
     
     // --- GETTERS ---
     
-    public CentroReciclaje getCentroReciclaje() { return centroReciclaje; }
-    public ModuloEstadisticas getEstadisticas() { return estadisticas; }
-    public DoublyLinkedCircularList<Residuo> getListaResiduos() { return listaResiduos; }
-    public ColaZona getColaZonas() { return colaZonas; }
-    public HashMap<String, Zona> getMapaZonas() { return mapaZonas; }
+    public CentroReciclaje getCentroReciclaje() { 
+        return centroReciclaje; 
+    }
+    public ModuloEstadisticas getEstadisticas() { 
+        return estadisticas; 
+    }
+    public DoublyLinkedCircularList<Residuo> getListaResiduos() { 
+        return listaResiduos; 
+    }
+    public ColaZona getColaZonas() { 
+        return colaZonas; 
+    }
+    public HashMap<String, Zona> getMapaZonas() { 
+        return mapaZonas; 
+    }
 
     // --- PERSISTENCIA ---
     
@@ -149,6 +154,25 @@ public class SistemaEcoTrack implements Serializable {
             lista.add(r);
         }
         return lista;
+    }
+    
+    public static GrafoResiduo crearGrafoTipo(CentroReciclaje pila){
+        GrafoResiduo grafo = new GrafoResiduo(false);
+        
+        while(!pila.estaVacio()){
+            Residuo actual = pila.procesarResiduo();
+            grafo.agregarResiduo(actual);
+        }
+        
+        Residuo[] vectores = grafo.getVectores();
+        for(int i=0; i < grafo.getEffectiveSize(); i++){
+            for(int j=0; j < grafo.getEffectiveSize(); j++){
+                if(vectores[i].getTipo().equals(vectores[j].getTipo())){
+                    grafo.conectar(vectores[i].getId(), vectores[j].getId());
+                }
+            }
+        }
+        return grafo;
     }
 
 }

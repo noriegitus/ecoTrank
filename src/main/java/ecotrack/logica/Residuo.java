@@ -13,60 +13,48 @@ public class Residuo implements Serializable {
     private String zona;
     private int prioridad;
 
+    public Residuo(String id, String nombre, String tipo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.tipo = tipo;
+    }
+    
+    
+   
     public Residuo(String id, String nombre, String tipo, double peso, String zona, int prioridad) {
-        // Validaciones de campos obligatorios
-        if (id == null || id.trim().isEmpty()) {
-            throw new IllegalArgumentException("El ID del residuo no puede ser null o vacío");
-        }
-        if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre del residuo no puede ser null o vacío");
-        }
-        if (tipo == null || tipo.trim().isEmpty()) {
-            throw new IllegalArgumentException("El tipo del residuo no puede ser null o vacío");
-        }
-        if (zona == null || zona.trim().isEmpty()) {
-            throw new IllegalArgumentException("La zona del residuo no puede ser null o vacía");
-        }
-        if (peso < 0) {
-            throw new IllegalArgumentException("El peso del residuo no puede ser negativo. Valor recibido: " + peso);
-        }
-        if (prioridad < 0) {
-            throw new IllegalArgumentException("La prioridad del residuo no puede ser negativa. Valor recibido: " + prioridad);
-        }
-        
-        this.id = id.trim();
-        this.nombre = nombre.trim();
-        this.tipo = tipo.trim();
+    validarCampos(id, nombre, tipo, zona, peso, prioridad);
+        this.id = id;
+        this.nombre = nombre;
+        this.tipo = tipo;
         this.peso = peso;
-        this.fechaRecoleccion = LocalDate.now(); // Asigna fecha actual por defecto
-        this.zona = zona.trim();
+        this.zona = zona;
         this.prioridad = prioridad;
+        this.fechaRecoleccion = LocalDate.now();
+    }
+
+    // Método privado para evitar repetir las mismas validaciones en constructor y setters
+    private void validarCampos(String id, String nom, String tip, String zon, double p, int prio) {
+        if (id == null || nom == null || tip == null || zon == null) 
+            throw new IllegalArgumentException("Ningún campo puede ser nulo.");
+        if (p < 0 || prio < 0) 
+            throw new IllegalArgumentException("Peso y prioridad deben ser valores positivos.");
     }
 
     public void setId(String id) {
-        if (id == null || id.trim().isEmpty()) {
-            throw new IllegalArgumentException("El ID del residuo no puede ser null o vacío");
-        }
-        this.id = id.trim();
+        this.id = id;
     }
 
     public void setNombre(String nombre) {
-        if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre del residuo no puede ser null o vacío");
-        }
-        this.nombre = nombre.trim();
+        this.nombre = nombre;
     }
 
     public void setTipo(String tipo) {
-        if (tipo == null || tipo.trim().isEmpty()) {
-            throw new IllegalArgumentException("El tipo del residuo no puede ser null o vacío");
-        }
-        this.tipo = tipo.trim();
+        this.tipo = tipo;
     }
 
     public void setPeso(double peso) {
         if (peso < 0) {
-            throw new IllegalArgumentException("El peso del residuo no puede ser negativo. Valor recibido: " + peso);
+            throw new IllegalArgumentException("Peso inválido: " + peso);
         }
         this.peso = peso;
     }
@@ -76,25 +64,32 @@ public class Residuo implements Serializable {
     }
 
     public void setZona(String zona) {
-        if (zona == null || zona.trim().isEmpty()) {
-            throw new IllegalArgumentException("La zona del residuo no puede ser null o vacía");
-        }
-        this.zona = zona.trim();
+        this.zona = zona;
     }
 
     public void setPrioridad(int prioridad) {
         if (prioridad < 0) {
-            throw new IllegalArgumentException("La prioridad del residuo no puede ser negativa. Valor recibido: " + prioridad);
+            throw new IllegalArgumentException("Prioridad incorrecta:" + prioridad);
         }
         this.prioridad = prioridad;
     }
 
     // Getters
-    public String getId() { return id; }
-    public String getNombre() { return nombre; }
-    public String getTipo() { return tipo; }
-    public double getPeso() { return peso; }
-    public int getPrioridad() { return prioridad; }
+    public String getId() { 
+        return id; 
+    }
+    public String getNombre() { 
+        return nombre; 
+    }
+    public String getTipo() { 
+        return tipo; 
+    }
+    public double getPeso() { 
+        return peso; 
+    }
+    public int getPrioridad() { 
+        return prioridad; 
+    }
     public String getZona() {return zona;}
 
     @Override

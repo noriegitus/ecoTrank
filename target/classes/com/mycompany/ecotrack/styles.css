@@ -48,7 +48,7 @@
     -fx-text-fill: white;
 }
 
-/* Mejoras para botones */
+/*Mejoras para botones*/
 .menu-button:pressed {
     -fx-background-color: #1b5e20;
     -fx-scale-x: 0.98;

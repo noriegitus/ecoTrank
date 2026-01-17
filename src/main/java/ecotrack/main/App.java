@@ -139,19 +139,7 @@ public class App extends Application {
 
     // Método para inicializar datos de ejemplo (solo primera vez)
     private void inicializarDatosEjemplo() {
-        if (!sistema.getMapaZonas().containsKey("Zona Norte")) {
-            ecotrack.logica.Zona zonaNorte = new ecotrack.logica.Zona("Zona Norte");
-            sistema.agregarZona(zonaNorte);
-        }
-        
-        sistema.getCentroReciclaje().recibirResiduo(
-                new Residuo("R1", "Botella", "Plástico", 2.5, "Zona Norte", 1)
-        );
-        sistema.agregarResiduo(new Residuo("B1", "Botella", "Plástico", 1.5, "Zona Norte", 2));
-        
-        System.out.println("Datos de ejemplo inicializados");
     }
-
     public static void main(String[] args) {
         launch();
     }

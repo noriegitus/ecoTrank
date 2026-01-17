@@ -8,10 +8,7 @@ public class Zona implements Serializable {
     int p_Pendiente;
 
     public Zona(String nombre){
-        if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre de la zona no puede ser null o vacío");
-        }
-        nombreZona = nombre.trim();
+        nombreZona = nombre;
         p_Recolectado = 0;
         p_Pendiente = 0;
     }

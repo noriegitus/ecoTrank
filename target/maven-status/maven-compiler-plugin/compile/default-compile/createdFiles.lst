@@ -15,7 +15,8 @@ ecotrack\main\App.class
 ecotrack\main\SistemaInyectable.class
 ecotrack\main\EstadisticaController.class
 ecotrack\main\ZonasController$1.class
-ecotrack\main\SecondaryController.class
+ecotrack\services\GrafoResiduo.class
+ecotrack\services\Test.class
 ecotrack\main\FilaEstadistica.class
 ecotrack\services\ServicioPersistencia.class
 ecotrack\services\ColaZona.class

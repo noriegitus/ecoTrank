@@ -16,19 +16,19 @@ public class ModuloEstadisticas implements Serializable {
 
     public void registrarEstadistica(Residuo r) {
         if (r == null) {
-            System.err.println("Error: No se puede registrar estadística de un residuo null");
+            System.err.println("Error: No se puede registrar estadística de un residuo no existente");
             return;
         }
         
         String tipo = r.getTipo();
         if (tipo == null || tipo.trim().isEmpty()) {
-            System.err.println("Error: El tipo del residuo no puede ser null o vacío");
+            System.err.println("Es necesario un tipo para el residuo");
             return;
         }
         
         double peso = r.getPeso();
         if (peso < 0) {
-            System.err.println("Error: El peso del residuo no puede ser negativo. Valor: " + peso);
+            System.err.println("El peso no puede ser negativo: " + peso);
             return;
         }
         

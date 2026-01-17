@@ -51,7 +51,7 @@ public class VerResiduosController implements SistemaInyectable {
         
         // Si el sistema ya está configurado (raro pero posible), configurar ahora
         if (sistema != null && tablaResiduos != null && colId != null) {
-            System.out.println("Sistema ya disponible en initialize(), configurando ahora...");
+            System.out.println("Sistema ya disponible en initialize(), configurando...");
             inicializarTabla();
             inicializarComboOrdenamiento();
             cargarDatos();
@@ -90,7 +90,7 @@ public class VerResiduosController implements SistemaInyectable {
                         mostrarResiduoActual();
                     }
                 } else {
-                    System.err.println("ERROR CRÍTICO: Las columnas nunca se inicializaron");
+                    System.err.println("ERROR : Las columnas nunca se inicializaron");
                 }
             });
             return;
@@ -231,10 +231,8 @@ public class VerResiduosController implements SistemaInyectable {
             return;
         }
         
-        System.out.println("Configurando CellValueFactory para las columnas...");
+        System.out.println("Configurando las columnas...");
         
-        // Usar callbacks directos en lugar de PropertyValueFactory para mayor compatibilidad con módulos
-        // Esto evita problemas con reflexión en módulos Java
         try {
             colId.setCellValueFactory(cellData -> {
                 Residuo r = cellData.getValue();
@@ -266,9 +264,9 @@ public class VerResiduosController implements SistemaInyectable {
                 return r != null ? new SimpleIntegerProperty(r.getPrioridad()).asObject() : new SimpleIntegerProperty(0).asObject();
             });
             
-            System.out.println("CellValueFactory configurado correctamente usando callbacks directos");
+            System.out.println("Configurado correctamente");
         } catch (Exception e) {
-            System.err.println("ERROR CRÍTICO al configurar CellValueFactory: " + e.getMessage());
+            System.err.println("Error al configurar: " + e.getMessage());
             e.printStackTrace();
         }
         
@@ -285,11 +283,11 @@ public class VerResiduosController implements SistemaInyectable {
 
     private void cargarDatos() {
         if (tablaResiduos == null) {
-            System.err.println("Error: tablaResiduos es null");
+            System.err.println("Error: tablaResiduos esta vacia");
             return;
         }
         if (sistema == null) {
-            System.err.println("Error: sistema es null");
+            System.err.println("Error: sistema es inexistente");
             return;
         }
         
@@ -316,7 +314,7 @@ public class VerResiduosController implements SistemaInyectable {
         
         // Verificar que las columnas estén configuradas
         if (colId.getCellValueFactory() == null) {
-            System.err.println("ERROR CRÍTICO: colId no tiene CellValueFactory configurado");
+            System.err.println("ERROR CRÍTICO");
             inicializarTabla();
         }
         

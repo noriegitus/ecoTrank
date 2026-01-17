@@ -106,7 +106,7 @@ public class ZonasController implements SistemaInyectable {
     private void actualizarVista() {
         try {
             if (tablaZonas == null) {
-                System.err.println("Error: tablaZonas es null");
+                System.err.println("Error: tablaZonas es no valido");
                 return;
             }
             if (sistema == null) {
@@ -122,7 +122,7 @@ public class ZonasController implements SistemaInyectable {
 
             java.util.List<Zona> zonas = cola.getZonas();
             if (zonas == null) {
-                System.err.println("Error: Lista de zonas es null");
+                System.err.println("Error: Lista de zonas es no valido");
                 tablaZonas.setItems(FXCollections.observableArrayList());
                 return;
             }

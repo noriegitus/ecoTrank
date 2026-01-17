@@ -1,25 +1,26 @@
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\main\PrimaryController.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\logica\Zona.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\services\ComparadorZona.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\main\CentroReciclajeController.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\logica\Residuo.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\services\CentroReciclaje.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\main\EstadisticaController.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\main\ZonasController.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\module-info.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\services\SistemaEcoTrack.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\main\SistemaInyectable.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\estructuras\DoublyLinkedCircularList.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\estructuras\Iterator.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\services\ServicioPersistencia.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\estructuras\PriorityQueuePropia.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\services\ComparadorPorTipo.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\services\ComparadorPorPrioridad.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\main\VerResiduosController.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\services\ColaZona.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\estructuras\List.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\main\App.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\services\ComparadorPorPeso.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\main\SecondaryController.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\main\FilaEstadistica.java
-C:\Users\PC\Desktop\Proyecto estructuras 2\ecoTrank\ecoTrank\src\main\java\ecotrack\services\ModuloEstadisticas.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\ComparadorZona.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\ModuloEstadisticas.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\main\VerResiduosController.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\logica\Zona.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\Test.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\estructuras\Iterator.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\ComparadorPorTipo.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\main\EstadisticaController.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\main\SistemaInyectable.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\main\PrimaryController.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\ComparadorPorPeso.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\logica\Residuo.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\ColaZona.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\estructuras\DoublyLinkedCircularList.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\GrafoResiduo.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\module-info.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\estructuras\List.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\main\App.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\estructuras\PriorityQueuePropia.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\main\FilaEstadistica.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\main\ZonasController.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\SistemaEcoTrack.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\main\CentroReciclajeController.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\ServicioPersistencia.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\ComparadorPorPrioridad.java
+C:\Users\User\OneDrive\Desktop\ED_P3_Grupo10-2\ED_P3_Grupo10\ED_P3_Grupo10\ecoTrank-main\src\main\java\ecotrack\services\CentroReciclaje.java
